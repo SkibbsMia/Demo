@@ -3,99 +3,106 @@
 <!-- Fig. 16.5: SwitchContent.html -->
 <!-- Asynchronously display content without reloading the page. -->
 <html>
+
 <head>
-   <meta charset = "utf-8">
-   <style type = "text/css">
-      .box { border: 1px solid black; padding: 10px }
+   <meta charset="utf-8">
+   <style type="text/css">
+      .box {
+         border: 1px solid black;
+         padding: 10px
+      }
    </style>
    <title>Switch Content Asynchronously</title>
    <script>
       var asyncRequest; // variable to hold XMLHttpRequest object
 
       // set up event handlers
-      function registerListeners()
-      {
+      /* You need to store the SwitchContent.html file in your personal github server. Similar to code
+      example 01, it needs 6 images of your favorite sports club or team (instead of books shown in the code
+      example01). And corresponding 6 html files (similar to example 01) containing the description/more info
+      about the club/teams. [10 marks] 
+      
+      Task02: You need to create 6 html files describing/having more info about the clubs/teams and store them in
+      your personal github server under folder InfoFiles.
+      Note: You can reuse the html files of code example01, having more info about books and rename and modify
+      them to include the info about your favorite sports club. (NFL, NBA, NHL, Baseball clubs etc.) [5 marks]
+      There are six images shown in the example01. Following is url of the images used in the Example01.
+      http://test.deitel.com/images/thumbs/cpphtp8.jpg
+      
+      Task 03: You need to collect the images (6 images from internet or sports club website) of your favorite sports
+      club (similar to books) and store them in images/thumbs folder of your personal github server. [5 marks]
+      */
+      function registerListeners() {
          var img;
-         img = document.getElementById( "cpphtp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "cpphtp.html" ); }, false ); 
-         img.addEventListener( "mouseout", clearContent, false ); 
-         img = document.getElementById( "iw3htp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "iw3htp.html" ); }, false ); 
-         img.addEventListener( "mouseout", clearContent, false ); 
-         img = document.getElementById( "jhtp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "jhtp.html" ); }, false ); 
-         img.addEventListener( "mouseout", clearContent, false ); 
-         img = document.getElementById( "vbhtp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "vbhtp.html" ); }, false ); 
-         img.addEventListener( "mouseout", clearContent, false ); 
-         img = document.getElementById( "vcshtp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "vcshtp.html" ); }, false );
-         img.addEventListener( "mouseout", clearContent, false ); 
-         img = document.getElementById( "javafp" );
-         img.addEventListener( "mouseover", 
-            function() { getContent( "javafp.html" ); }, false ); 
-         img.addEventListener( "mouseout", clearContent, false ); 
+         img = document.getElementById("birdPicture");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/birdPicture.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
+         img = document.getElementById("logoBlueJays");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/logoBlueJays.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
+         img = document.getElementById("blueJayPlayer");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/blueJayPlayer.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
+         img = document.getElementById("blueJaySchedule");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/blueJaySchedule.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
+         img = document.getElementById("blueJayStadium");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/blueJayStadium.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
+         img = document.getElementById("blueJayBatFlip");
+         img.addEventListener("mouseover",
+            function () { getContent("IntroFiles/blueJayBatFlip.html"); }, false);
+         img.addEventListener("mouseout", clearContent, false);
       } // end function registerListeners
 
       // set up and send the asynchronous request.
-      function getContent( url )
-      {
+      function getContent(url) {
          // attempt to create XMLHttpRequest object and make the request
-         try
-         {
+         try {
             asyncRequest = new XMLHttpRequest(); // create request object
 
             // register event handler
             asyncRequest.addEventListener(
-               "readystatechange", stateChange, false); 
-            asyncRequest.open( "GET", url, true ); // prepare the request
-            asyncRequest.send( null ); // send the request
+               "readystatechange", stateChange, false);
+            asyncRequest.open("GET", url, true); // prepare the request
+            asyncRequest.send(null); // send the request
          } // end try
-         catch ( exception )
-         {
-            alert( "Request failed." );
+         catch (exception) {
+            alert("Request failed.");
          } // end catch
       } // end function getContent
-      
+
       // displays the response data on the page
-      function stateChange()
-      {
-         if ( asyncRequest.readyState == 4 && asyncRequest.status == 200 )
-         {
-            document.getElementById( "contentArea" ).innerHTML = 
+      function stateChange() {
+         if (asyncRequest.readyState == 4 && asyncRequest.status == 200) {
+            document.getElementById("contentArea").innerHTML =
                asyncRequest.responseText; // places text in contentArea
          } // end if
       } // end function stateChange
 
       // clear the content of the box
-      function clearContent()
-      {
-         document.getElementById( "contentArea" ).innerHTML = "";
+      function clearContent() {
+         document.getElementById("contentArea").innerHTML = "";
       } // end function clearContent
 
-      window.addEventListener( "load", registerListeners, false );
+      window.addEventListener("load", registerListeners, false);
    </script>
 </head>
-<body>
-   <h1>Mouse over a book for more information.</h1>
-   <img id = "cpphtp" alt = "C++ How to Program book cover"
-      src = "c-plus-plus-how-to-program-10e.jpg">
-   <img id = "iw3htp" alt = "Internet & WWW How to Program book cover"
-      src = "http://test.deitel.com/images/thumbs/iw3htp5.jpg">
-   <img id = "jhtp" alt = "Java How to Program book cover"
-      src = "http://test.deitel.com/images/thumbs/jhtp9.jpg">
-   <img id = "vbhtp" alt = "Visual Basic 2010 How to Program book cover"
-      src = "http://test.deitel.com/images/thumbs/vb2010htp.jpg">
-   <img id = "vcshtp" alt = "Visual C# 2010 How to Program book cover" 
-      src = "http://test.deitel.com/images/thumbs/vcsharp2010htp.jpg">
-   <img id = "javafp" alt = "Java for Programmers book cover"
-      src = "http://test.deitel.com/images/thumbs/javafp.jpg">
-   <div class = "box" id = "contentArea"></div>
-</body>
-</html>
 
+<body>
+   <h1>Mouse over a picture for more information about the Blue Jays.</h1>
+   <img id="birdPicture" alt="A Blue Jay Bird" src="/images/Blue_Jay_bird.jpg">
+   <img id="logoBlueJays" alt="Blue Jay's Logo" src="/images/Blue_Jay_Logo.jpg">
+   <img id="blueJayPlayer" alt="Outfield Blue Jay" src="/images/Blue_Jay_Runner.jpg">
+   <img id="blueJaySchedule" alt="Blue Jay Schedule" src="/images/Blue_Jay_Schedule.jpg">
+   <img id="blueJayStadium" alt="Blue Jay Stadium" src="/images/Blue_Jays_Home.jpg">
+   <img id="blueJayBatFlip" alt="Bat Flip" src="/images/Jose_Bautista_Bat_Flip.jpg">
+   <div class="box" id="contentArea"></div>
+</body>
+
+</html>
