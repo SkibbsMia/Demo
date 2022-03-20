@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<!-- Fig. 16.5: SwitchContent.html -->
-<!-- Asynchronously display content without reloading the page. -->
 <html>
 
 <head>
@@ -12,26 +9,10 @@
          padding: 10px
       }
    </style>
-   <title>Switch Content Asynchronously</title>
+   <title>Maria's ICE 05</title>
    <script>
       var asyncRequest; // variable to hold XMLHttpRequest object
 
-      // set up event handlers
-      /* You need to store the SwitchContent.html file in your personal github server. Similar to code
-      example 01, it needs 6 images of your favorite sports club or team (instead of books shown in the code
-      example01). And corresponding 6 html files (similar to example 01) containing the description/more info
-      about the club/teams. [10 marks] 
-      
-      Task02: You need to create 6 html files describing/having more info about the clubs/teams and store them in
-      your personal github server under folder InfoFiles.
-      Note: You can reuse the html files of code example01, having more info about books and rename and modify
-      them to include the info about your favorite sports club. (NFL, NBA, NHL, Baseball clubs etc.) [5 marks]
-      There are six images shown in the example01. Following is url of the images used in the Example01.
-      http://test.deitel.com/images/thumbs/cpphtp8.jpg
-      
-      Task 03: You need to collect the images (6 images from internet or sports club website) of your favorite sports
-      club (similar to books) and store them in images/thumbs folder of your personal github server. [5 marks]
-      */
       function registerListeners() {
          var img;
          img = document.getElementById("birdPicture");
